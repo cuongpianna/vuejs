@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Hello Vuejs</title>
+    <script src="https://vuejs.org/js/vue.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div id="app">
+      <h1 v-if="account.email == 'cuong@gmail.com' && account.password == '123'" style="color: red;">Dang nhap thanh cong</h1>
+        <h1 v-else style="color: green">Dang nhap that bai</h1>
+      <br>
+      <label for="">Email</label>
+      <input type="text" v-model="account.email" placeholder="Enter your name">
+      <label for="">Password</label>
+      <input type="password" v-model="account.password">
+    </div>
+
+    <script type="text/javascript">
+      new Vue({
+        el : '#app',
+        data: {
+          account : {}
+        }
+      })
+    </script>
+  </body>
+</html>

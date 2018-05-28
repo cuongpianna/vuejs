@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Quan ly su kien vs v-on</title>
+    <script src="https://vuejs.org/js/vue.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div id="app" class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1>Quản lý sự kiện với v-on Vuejs</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="alert alert-danger" role="alert" v-if="alert">
+                    Chỉ được thêm like sau 10 giây
+                </div>
+        <button class="btn btn-primary" @click="like">
+            <i class="far fa-thumbs-up"></i> Thích <span class="badge badge-pill badge-primary">{{ likes }}</span>
+        </button>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      new Vue({
+        el : '#app',
+        data: {
+                likes: 9,
+                lastClickTime: null,
+                alert: false
+            },
+        methods:{
+          like: function(){
+            if (this.lastClickTime === null || moment().diff(moment(this.lastClickTime), 'seconds') > 10) {
+                        this.likes ++;
+                        this.lastClickTime = moment().format();
+                        this.alert = false
+                    } else {
+                        this.alert = true;
+                    }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
